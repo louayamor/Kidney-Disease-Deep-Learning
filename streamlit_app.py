@@ -4,14 +4,14 @@ import base64
 from PIL import Image
 import io
 
-# API_URL = "http://localhost:8089/predict"
 API_URL = "https://kidney-disease-deep-learning.onrender.com/predict"
 
 def encode_image(file_bytes: bytes) -> str:
     return base64.b64encode(file_bytes).decode('utf-8')
 
 def predict_image(encoded_image: str) -> dict:
-    response = requests.post(API_URL, json={"image": encoded_image})
+    headers = {"Content-Type": "application/json"}
+    response = requests.post(API_URL, json={"image": encoded_image}, headers=headers)
     if response.status_code == 200:
         return response.json()
     else:
@@ -43,7 +43,7 @@ def main():
     if uploaded_file is not None:
         file_bytes = uploaded_file.read()
         image = Image.open(io.BytesIO(file_bytes))
-        st.image(image, caption="🖼️ Uploaded Image", use_container_width=True)  # Updated parameter
+        st.image(image, caption="🖼️ Uploaded Image", use_container_width=True)
 
         encoded_image = encode_image(file_bytes)
 
