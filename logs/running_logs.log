@@ -76,3 +76,90 @@ x==========x]
 [2025-04-27 17:23:42,761: INFO: main: >>>>>> stage Evaluation stage completed <<<<<<
 
 x==========x]
+[2025-04-27 18:31:51,685: INFO: _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8089
+ * Running on http://192.168.1.15:8089]
+[2025-04-27 18:31:51,685: INFO: _internal: [33mPress CTRL+C to quit[0m]
+[2025-04-27 18:31:57,046: INFO: _internal: 127.0.0.1 - - [27/Apr/2025 18:31:57] "GET / HTTP/1.1" 200 -]
+[2025-04-27 18:31:57,414: INFO: _internal: 127.0.0.1 - - [27/Apr/2025 18:31:57] "[33mGET /Roboto-Regular.ttf HTTP/1.1[0m" 404 -]
+[2025-04-27 18:32:13,351: INFO: _internal: 127.0.0.1 - - [27/Apr/2025 18:32:13] "POST /predict HTTP/1.1" 200 -]
+[2025-04-27 18:33:44,793: INFO: _internal: 127.0.0.1 - - [27/Apr/2025 18:33:44] "POST /predict HTTP/1.1" 200 -]
+[2025-04-27 22:12:08,801: INFO: _internal: 127.0.0.1 - - [27/Apr/2025 22:12:08] "POST /predict HTTP/1.1" 200 -]
+[2025-04-27 22:12:30,348: INFO: _internal: 127.0.0.1 - - [27/Apr/2025 22:12:30] "POST /predict HTTP/1.1" 200 -]
+[2025-04-27 22:13:46,486: ERROR: app: Exception on /predict [POST]]
+Traceback (most recent call last):
+  File "/home/louay/PycharmProjects/KidneyDisease/.venv3.10/lib/python3.10/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/louay/PycharmProjects/KidneyDisease/.venv3.10/lib/python3.10/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/louay/PycharmProjects/KidneyDisease/.venv3.10/lib/python3.10/site-packages/flask_cors/extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/home/louay/PycharmProjects/KidneyDisease/.venv3.10/lib/python3.10/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/louay/PycharmProjects/KidneyDisease/.venv3.10/lib/python3.10/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/home/louay/PycharmProjects/KidneyDisease/.venv3.10/lib/python3.10/site-packages/flask_cors/decorator.py", line 121, in wrapped_function
+    resp = make_response(f(*args, **kwargs))
+  File "/home/louay/PycharmProjects/KidneyDisease/app.py", line 44, in predictRoute
+    result = clApp.classifier.predict()
+  File "/home/louay/PycharmProjects/KidneyDisease/cnnClassifier/pipeline/prediction.py", line 19, in predict
+    test_image = image.load_img(imagename, target_size = (224,224))
+  File "/home/louay/PycharmProjects/KidneyDisease/.venv3.10/lib/python3.10/site-packages/keras/utils/image_utils.py", line 423, in load_img
+    img = pil_image.open(io.BytesIO(f.read()))
+  File "/home/louay/PycharmProjects/KidneyDisease/.venv3.10/lib/python3.10/site-packages/PIL/Image.py", line 3572, in open
+    raise UnidentifiedImageError(msg)
+PIL.UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x723100160c70>
+[2025-04-27 22:13:46,488: INFO: _internal: 127.0.0.1 - - [27/Apr/2025 22:13:46] "[35m[1mPOST /predict HTTP/1.1[0m" 500 -]
+[2025-04-27 22:15:17,569: ERROR: app: Exception on /predict [POST]]
+Traceback (most recent call last):
+  File "/home/louay/PycharmProjects/KidneyDisease/.venv3.10/lib/python3.10/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/louay/PycharmProjects/KidneyDisease/.venv3.10/lib/python3.10/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/louay/PycharmProjects/KidneyDisease/.venv3.10/lib/python3.10/site-packages/flask_cors/extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/home/louay/PycharmProjects/KidneyDisease/.venv3.10/lib/python3.10/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/louay/PycharmProjects/KidneyDisease/.venv3.10/lib/python3.10/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/home/louay/PycharmProjects/KidneyDisease/.venv3.10/lib/python3.10/site-packages/flask_cors/decorator.py", line 121, in wrapped_function
+    resp = make_response(f(*args, **kwargs))
+  File "/home/louay/PycharmProjects/KidneyDisease/app.py", line 44, in predictRoute
+    result = clApp.classifier.predict()
+  File "/home/louay/PycharmProjects/KidneyDisease/cnnClassifier/pipeline/prediction.py", line 19, in predict
+    test_image = image.load_img(imagename, target_size = (224,224))
+  File "/home/louay/PycharmProjects/KidneyDisease/.venv3.10/lib/python3.10/site-packages/keras/utils/image_utils.py", line 423, in load_img
+    img = pil_image.open(io.BytesIO(f.read()))
+  File "/home/louay/PycharmProjects/KidneyDisease/.venv3.10/lib/python3.10/site-packages/PIL/Image.py", line 3572, in open
+    raise UnidentifiedImageError(msg)
+PIL.UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x723100228400>
+[2025-04-27 22:15:17,570: INFO: _internal: 127.0.0.1 - - [27/Apr/2025 22:15:17] "[35m[1mPOST /predict HTTP/1.1[0m" 500 -]
+[2025-04-27 22:15:28,265: ERROR: app: Exception on /predict [POST]]
+Traceback (most recent call last):
+  File "/home/louay/PycharmProjects/KidneyDisease/.venv3.10/lib/python3.10/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/louay/PycharmProjects/KidneyDisease/.venv3.10/lib/python3.10/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/louay/PycharmProjects/KidneyDisease/.venv3.10/lib/python3.10/site-packages/flask_cors/extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/home/louay/PycharmProjects/KidneyDisease/.venv3.10/lib/python3.10/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/louay/PycharmProjects/KidneyDisease/.venv3.10/lib/python3.10/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/home/louay/PycharmProjects/KidneyDisease/.venv3.10/lib/python3.10/site-packages/flask_cors/decorator.py", line 121, in wrapped_function
+    resp = make_response(f(*args, **kwargs))
+  File "/home/louay/PycharmProjects/KidneyDisease/app.py", line 44, in predictRoute
+    result = clApp.classifier.predict()
+  File "/home/louay/PycharmProjects/KidneyDisease/cnnClassifier/pipeline/prediction.py", line 19, in predict
+    test_image = image.load_img(imagename, target_size = (224,224))
+  File "/home/louay/PycharmProjects/KidneyDisease/.venv3.10/lib/python3.10/site-packages/keras/utils/image_utils.py", line 423, in load_img
+    img = pil_image.open(io.BytesIO(f.read()))
+  File "/home/louay/PycharmProjects/KidneyDisease/.venv3.10/lib/python3.10/site-packages/PIL/Image.py", line 3572, in open
+    raise UnidentifiedImageError(msg)
+PIL.UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x7230effd3380>
+[2025-04-27 22:15:28,265: INFO: _internal: 127.0.0.1 - - [27/Apr/2025 22:15:28] "[35m[1mPOST /predict HTTP/1.1[0m" 500 -]
+[2025-04-27 22:20:06,488: WARNING: polymorphic_function: 5 out of the last 5 calls to <function Model.make_predict_function.<locals>.predict_function at 0x7230eff4c8b0> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.]
+[2025-04-27 22:20:06,490: INFO: _internal: 127.0.0.1 - - [27/Apr/2025 22:20:06] "POST /predict HTTP/1.1" 200 -]
+[2025-04-27 22:20:24,225: WARNING: polymorphic_function: 6 out of the last 6 calls to <function Model.make_predict_function.<locals>.predict_function at 0x7230eff4c9d0> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.]
+[2025-04-27 22:20:24,227: INFO: _internal: 127.0.0.1 - - [27/Apr/2025 22:20:24] "POST /predict HTTP/1.1" 200 -]
