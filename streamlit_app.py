@@ -5,7 +5,8 @@ import json
 from PIL import Image
 import io
 
-API_URL = "https://kidney-disease-deep-learning.onrender.com/predict"
+# API_URL = "https://kidney-disease-deep-learning.onrender.com/predict"
+API_URL = "http://localhost:8089/predict"
 
 def encode_image(file_bytes: bytes) -> str:
     return base64.b64encode(file_bytes).decode('utf-8')
@@ -14,7 +15,7 @@ def predict_image(encoded_image: str) -> dict:
     headers = {"Content-Type": "application/json"}
     try:
         response = requests.post(API_URL, json={"image": encoded_image}, headers=headers)
-        response.raise_for_status()  # Raise error for 4xx/5xx status codes
+        response.raise_for_status()
         return response.json()
     except requests.exceptions.RequestException as e:
         st.error(f"❌ Request Error: {e}")
