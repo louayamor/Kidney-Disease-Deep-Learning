@@ -1,6 +1,7 @@
 import streamlit as st
 import requests
 import base64
+import json
 from PIL import Image
 import io
 
@@ -13,13 +14,22 @@ def predict_image(encoded_image: str) -> dict:
     headers = {"Content-Type": "application/json"}
     try:
         response = requests.post(API_URL, json={"image": encoded_image}, headers=headers)
-        response.raise_for_status()  # This will raise an error for 4xx/5xx status codes
+        response.raise_for_status()  # Raise error for 4xx/5xx status codes
         return response.json()
     except requests.exceptions.RequestException as e:
         st.error(f"❌ Request Error: {e}")
         return None
     except Exception as e:
         st.error(f"❌ Unexpected Error: {e}")
+        return None
+
+def load_scores(filepath="scores.json"):
+    try:
+        with open(filepath, "r") as f:
+            scores = json.load(f)
+        return scores
+    except FileNotFoundError:
+        st.warning("⚠️ Scores file not found.", icon="⚠️")
         return None
 
 def main():
@@ -59,6 +69,17 @@ def main():
                     result = predict_image(encoded_image)
                     if result:
                         st.success(f"✅ **Prediction Result:** {result}")
+
+                        # --- Load and Display Scores ---
+                        scores = load_scores()
+                        if scores:
+                            st.markdown("---")
+                            st.subheader("📈 Model Performance")
+
+                            col1, col2 = st.columns(2)
+                            col1.metric(label="Accuracy", value=f"{scores['accuracy']*100:.2f}%")
+                            col2.metric(label="Loss", value=f"{scores['loss']:.4f}")
+
                 except Exception as e:
                     st.error(f"❌ Connection Error: {e}")
 
