@@ -11,11 +11,15 @@ def encode_image(file_bytes: bytes) -> str:
 
 def predict_image(encoded_image: str) -> dict:
     headers = {"Content-Type": "application/json"}
-    response = requests.post(API_URL, json={"image": encoded_image}, headers=headers)
-    if response.status_code == 200:
+    try:
+        response = requests.post(API_URL, json={"image": encoded_image}, headers=headers)
+        response.raise_for_status()  # This will raise an error for 4xx/5xx status codes
         return response.json()
-    else:
-        st.error(f"❌ Server Error: {response.status_code}")
+    except requests.exceptions.RequestException as e:
+        st.error(f"❌ Request Error: {e}")
+        return None
+    except Exception as e:
+        st.error(f"❌ Unexpected Error: {e}")
         return None
 
 def main():
