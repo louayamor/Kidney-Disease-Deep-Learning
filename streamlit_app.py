@@ -4,7 +4,8 @@ import base64
 from PIL import Image
 import io
 
-API_URL = "https://kidney-disease-deep-learning.onrender.com"
+# API_URL = "http://localhost:8089/predict"
+API_URL = "https://kidney-disease-deep-learning.onrender.com/predict"
 
 def encode_image(file_bytes: bytes) -> str:
     return base64.b64encode(file_bytes).decode('utf-8')
