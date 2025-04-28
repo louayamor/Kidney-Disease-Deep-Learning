@@ -24,7 +24,7 @@ Run this to export as env variables:
 
 ```bash
 
-export MLFLOW_TRACKING_URI=https://dagshub.com/louayamor/Kidney-Disease-Deep-Learning.mlflow
+export MLFLOW_TRACKING_URI=https://dagshub.com/louayamor/Kidney-Disease-Deep-Learning.mlflow/
 
 export MLFLOW_TRACKING_USERNAME=louayamor
 
