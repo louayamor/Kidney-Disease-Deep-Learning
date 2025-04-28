@@ -28,7 +28,7 @@ export MLFLOW_TRACKING_URI=https://dagshub.com/louayamor/Kidney-Disease-Deep-Lea
 
 export MLFLOW_TRACKING_USERNAME=louayamor
 
-export MLFLOW_TRACKING_PASSWORD=43e4be99f01712730da4309383086e7758ca7ae2
+export MLFLOW_TRACKING_PASSWORD=e6cdcd3fb8b112f70d0b9bd52fbe2e5b9024b992
 
 ```
 
