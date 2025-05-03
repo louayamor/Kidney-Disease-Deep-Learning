@@ -29,10 +29,10 @@ jobs:
 
       - name: Build and push Flask API image
         run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/$IMAGE_FLASK ./backend
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/$IMAGE_FLASK .
           docker push ${{ secrets.DOCKER_USERNAME }}/$IMAGE_FLASK
 
       - name: Build and push Streamlit UI image
         run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/$IMAGE_STREAMLIT ./frontend
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/$IMAGE_STREAMLIT .
           docker push ${{ secrets.DOCKER_USERNAME }}/$IMAGE_STREAMLIT
