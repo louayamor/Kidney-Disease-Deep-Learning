@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kidney-streamlit-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kidney-streamlit
+  template:
+    metadata:
+      labels:
+        app: kidney-streamlit
+    spec:
+      containers:
+        - name: streamlit-container
+          image: kidneydisease_streamlit-ui:latest
+          ports:
+            - containerPort: 8501
+          command: ["streamlit", "run", "streamlit_app.py", "--server.enableCORS=false"]
+

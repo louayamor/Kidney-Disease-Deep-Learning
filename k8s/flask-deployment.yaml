@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kidney-flask-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kidney-flask
+  template:
+    metadata:
+      labels:
+        app: kidney-flask
+    spec:
+      containers:
+        - name: flask-container
+          image: kidneydisease_flask-api:latest
+          ports:
+            - containerPort: 5000
+          command: ["python", "app.py"]
+
