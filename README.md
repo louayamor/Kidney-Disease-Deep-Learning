@@ -1,64 +1,92 @@
-# Kidney-Disease-Classification-MLflow-DVC
+# 🧠 Kidney Disease Classification using Deep Learning
 
+This project uses a Convolutional Neural Network (CNN) to identify whether a kidney is diseased or healthy based on medical images. The training pipeline is built using Python and integrates with **MLflow** for experiment tracking.
 
+---
 
-
-## MLflow
-
-- [Documentation](https://mlflow.org/docs/latest/index.html)
-
-- [MLflow tutorial](https://youtu.be/qdcHHrsXA48?si=bD5vDS60akNphkem)
-
-##### cmd
-- mlflow ui
-
-### dagshub
-[dagshub](https://dagshub.com/)
-
-MLFLOW_TRACKING_URI=https://dagshub.com/entbappy/Kidney-Disease-Classification-MLflow-DVC.mlflow \
-MLFLOW_TRACKING_USERNAME=entbappy \
-MLFLOW_TRACKING_PASSWORD=6824692c47a369aa6f9eac5b10041d5c8edbcef0 \
-python script.py
-
-Run this to export as env variables:
-
-```bash
-
-export MLFLOW_TRACKING_URI=https://dagshub.com/louayamor/Kidney-Disease-Deep-Learning.mlflow/
-
-export MLFLOW_TRACKING_USERNAME=louayamor
-
-export MLFLOW_TRACKING_PASSWORD=e6cdcd3fb8b112f70d0b9bd52fbe2e5b9024b992
+## 📂 Project Structure
 
 ```
+kidney-disease-classification/
+├── data/                 # Image dataset
+├── models/               # Saved trained models
+├── researchs/            # Jupyter notebooks for EDA and prototyping
+├── src/                  # Source code: data loading, training, evaluation
+│   ├── data_utils.py
+│   ├── model.py
+│   └── train.py
+├── main.py               # Main training script
+├── requirements.txt
+└── README.md
+```
 
+---
 
-### DVC cmd
+## 🚀 Features
 
-1. dvc init
-2. dvc repro
-3. dvc dag
+- 🔍 Image classification of kidney disease using CNNs  
+- 📊 Real-time experiment tracking and metrics logging with **MLflow**  
+- 📁 Organized project structure for scalability  
+- 🧪 Easily extendable for hyperparameter tuning and model experimentation  
 
+---
 
-## About MLflow & DVC
+## 🔧 Installation
 
-MLflow
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/kidney-disease-classification.git
+   cd kidney-disease-classification
+   ```
 
- - Its Production Grade
- - Trace all of your expriements
- - Logging & taging your model
+2. Create a virtual environment and install dependencies:
+   ```bash
+   python -m venv venv
+   source venv/bin/activate
+   pip install -r requirements.txt
+   ```
 
+---
 
-DVC 
+## 📈 MLflow Tracking
 
- - Its very lite weight for POC only
- - lite weight expriements tracker
- - It can perform Orchestration (Creating Pipelines)
+We use [MLflow](https://mlflow.org/) to track experiments, parameters, metrics, and artifacts.
 
+### Launch MLflow UI locally:
 
+```bash
+mlflow ui
+```
 
+### Or use DAGsHub for online tracking:
 
-	
+[🔗 DAGsHub Project Page](https://dagshub.com/louayamor/Kidney-Disease-Deep-Learning.mlflow/)
 
+Set environment variables for DAGsHub MLflow integration:
 
+```bash
+export MLFLOW_TRACKING_URI=https://dagshub.com/louayamor/Kidney-Disease-Deep-Learning.mlflow/
+export MLFLOW_TRACKING_USERNAME=louayamor
+export MLFLOW_TRACKING_PASSWORD=
+```
 
+---
+
+## 🧠 Model Summary
+
+- **Architecture:** Convolutional Neural Networks (CNNs)  
+- **Input:** Preprocessed medical kidney images  
+- **Output:** Binary classification — Healthy or Diseased  
+
+---
+
+## 👨‍🔬 Author
+
+**Louay Amor**  
+🔗 [LinkedIn](https://www.linkedin.com/in/louayamor)
+
+---
+
+## 📜 License
+
+This project is licensed under the MIT License. See `LICENSE` for more details.
