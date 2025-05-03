@@ -10,9 +10,15 @@ jobs:
   build-and-push:
     runs-on: ubuntu-latest
 
-    env:
-      IMAGE_FLASK: kidneydisease_flask-api
-      IMAGE_STREAMLIT: kidneydisease_streamlit-ui
+    strategy:
+      matrix:
+        service:
+          - name: flask-api
+            image: kidneydisease_flask-api
+            dockerfile: Dockerfile.prod
+          - name: streamlit-ui
+            image: kidneydisease_streamlit-ui
+            dockerfile: Dockerfile.dev
 
     steps:
       - name: Checkout code
@@ -21,18 +27,13 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
 
-      - name: Log in to DockerHub
+      - name: Log in to Docker Hub
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Build and push Flask API image
+      - name: Build and Push ${{ matrix.service.name }} Image
         run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/$IMAGE_FLASK .
-          docker push ${{ secrets.DOCKER_USERNAME }}/$IMAGE_FLASK
-
-      - name: Build and push Streamlit UI image
-        run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/$IMAGE_STREAMLIT .
-          docker push ${{ secrets.DOCKER_USERNAME }}/$IMAGE_STREAMLIT
+          docker build -f ${{ matrix.service.dockerfile }} -t ${{ secrets.DOCKER_USERNAME }}/${{ matrix.service.image }} .
+          docker push ${{ secrets.DOCKER_USERNAME }}/${{ matrix.service.image }}
