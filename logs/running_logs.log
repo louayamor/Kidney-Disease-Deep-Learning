@@ -353,3 +353,61 @@ x==========x]
 [2025-04-28 07:48:11,363: INFO: _internal: 127.0.0.1 - - [28/Apr/2025 07:48:11] "POST /predict HTTP/1.1" 200 -]
 [2025-04-28 11:09:39,035: WARNING: polymorphic_function: 5 out of the last 5 calls to <function Model.make_predict_function.<locals>.predict_function at 0x7f5e73fc7a30> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.]
 [2025-04-28 11:09:39,039: INFO: _internal: 127.0.0.1 - - [28/Apr/2025 11:09:39] "POST /predict HTTP/1.1" 200 -]
+[2025-05-03 02:08:52,307: INFO: main: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2025-05-03 02:08:52,316: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2025-05-03 02:08:52,322: INFO: common: yaml file: params.yaml loaded successfully]
+[2025-05-03 02:08:52,323: INFO: common: created directory at: artifacts]
+[2025-05-03 02:08:52,323: INFO: common: created directory at: artifacts/data_ingestion]
+[2025-05-03 02:08:52,324: INFO: data_ingestion: Downloading data from https://drive.google.com/file/d/1vlhZ5c7abUKF8xXERIw6m9Te8fW7ohw3/view?usp=sharing into file artifacts/data_ingestion/data.zip]
+[2025-05-03 02:09:44,046: INFO: data_ingestion: Downloaded data from https://drive.google.com/file/d/1vlhZ5c7abUKF8xXERIw6m9Te8fW7ohw3/view?usp=sharing into file artifacts/data_ingestion/data.zip]
+[2025-05-03 02:09:45,503: INFO: main: >>>>>> stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2025-05-03 02:09:45,503: INFO: main: *******************]
+[2025-05-03 02:09:45,503: INFO: main: >>>>>> stage Prepare base model started <<<<<<]
+[2025-05-03 02:09:45,510: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2025-05-03 02:09:45,517: INFO: common: yaml file: params.yaml loaded successfully]
+[2025-05-03 02:09:45,519: INFO: common: created directory at: artifacts]
+[2025-05-03 02:09:45,519: INFO: common: created directory at: artifacts/prepare_base_model]
+[2025-05-03 02:09:49,115: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2025-05-03 02:09:49,405: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2025-05-03 02:09:49,615: INFO: main: >>>>>> stage Prepare base model completed <<<<<<
+
+x==========x]
+[2025-05-03 02:09:49,615: INFO: main: *******************]
+[2025-05-03 02:09:49,615: INFO: main: >>>>>> stage Training started <<<<<<]
+[2025-05-03 02:09:49,620: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2025-05-03 02:09:49,624: INFO: common: yaml file: params.yaml loaded successfully]
+[2025-05-03 02:09:49,624: INFO: common: created directory at: artifacts]
+[2025-05-03 02:09:49,625: INFO: common: created directory at: artifacts/training]
+[2025-05-03 02:09:50,160: WARNING: saving_utils: Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.]
+[2025-05-03 02:09:52,373: ERROR: main: numpy() is only available when eager execution is enabled.]
+Traceback (most recent call last):
+  File "/home/louay/PycharmProjects/KidneyDisease/main.py", line 42, in <module>
+    model_trainer.main()
+  File "/home/louay/PycharmProjects/KidneyDisease/cnnClassifier/pipeline/stage_03_model_training.py", line 21, in main
+    training.train()
+  File "/home/louay/PycharmProjects/KidneyDisease/cnnClassifier/components/model_training.py", line 76, in train
+    self.model.fit(
+  File "/home/louay/PycharmProjects/KidneyDisease/.venv3.10/lib/python3.10/site-packages/keras/src/utils/traceback_utils.py", line 122, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/home/louay/PycharmProjects/KidneyDisease/.venv3.10/lib/python3.10/site-packages/keras/src/backend/tensorflow/core.py", line 158, in convert_to_numpy
+    return np.array(x)
+NotImplementedError: numpy() is only available when eager execution is enabled.
+[2025-05-03 02:10:05,042: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2025-05-03 02:10:05,050: INFO: common: yaml file: params.yaml loaded successfully]
+[2025-05-03 02:10:05,055: INFO: common: created directory at: artifacts]
+[2025-05-03 02:10:05,057: INFO: common: created directory at: artifacts/data_ingestion]
+[2025-05-03 02:10:05,059: INFO: 1554040998: Downloading data from https://drive.google.com/file/d/1vlhZ5c7abUKF8xXERIw6m9Te8fW7ohw3/view?usp=sharing into file artifacts/data_ingestion/data.zip]
+[2025-05-03 02:10:57,461: INFO: 1554040998: Downloaded data from https://drive.google.com/file/d/1vlhZ5c7abUKF8xXERIw6m9Te8fW7ohw3/view?usp=sharing into file artifacts/data_ingestion/data.zip]
+[2025-05-03 02:12:20,456: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2025-05-03 02:12:20,467: INFO: common: yaml file: params.yaml loaded successfully]
+[2025-05-03 02:12:20,472: INFO: common: created directory at: artifacts]
+[2025-05-03 02:12:20,476: INFO: common: created directory at: artifacts/prepare_base_model]
+[2025-05-03 02:12:23,190: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2025-05-03 02:12:23,601: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2025-05-03 02:13:43,184: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2025-05-03 02:13:43,192: INFO: common: yaml file: params.yaml loaded successfully]
+[2025-05-03 02:13:43,196: INFO: common: created directory at: artifacts]
+[2025-05-03 02:13:43,200: INFO: common: created directory at: artifacts/training]
+[2025-05-03 02:13:44,397: WARNING: saving_utils: Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.]
